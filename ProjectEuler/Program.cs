@@ -34,6 +34,20 @@ namespace ProjectEuler
 
             #endregion
 
+            Console.WriteLine();
+
+            #region Problems11-20
+
+            ComputeAndDisplayAnswer(Problems.Problems11_20.Problem11, 11);
+
+            ComputeAndDisplayAnswer(Problems.Problems11_20.Problem12, 12);
+
+            ComputeAndDisplayAnswer(Problems.Problems11_20.Problem13, 13);
+
+            #endregion
+
+            Console.WriteLine();
+
             var timeTaken = DateTime.UtcNow - startTime;
             Console.WriteLine();
             Console.WriteLine("Problems computed in " + timeTaken.TotalSeconds + " seconds");
