@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 
 namespace ProjectEuler.Problems
 {
@@ -199,12 +200,34 @@ namespace ProjectEuler.Problems
 
         public static long Problem9()
         {
-            throw new NotImplementedException();
+            for (var a = 1; a < 1000; a++)
+            {
+                for (var b = 1; b < 1000; b++)
+                {
+                    for (var c = 1; c < 1000; c++)
+                    {
+                        if (a + b + c != 1000) continue;
+
+                        if (ProblemHelper.IsPythagoreanTriplet(a, b, c))
+                            return a*b*c;
+                    }
+                }
+            }
+
+            return 0;
         }
 
         public static long Problem10()
         {
-            throw new NotImplementedException();
+            long primeSum = 0;
+
+            for (var x = 2; x < 2000000; x++)
+            {
+                if (ProblemHelper.IsPrime(x))
+                    primeSum += x;
+            }
+
+            return primeSum;
         }
     }
 }

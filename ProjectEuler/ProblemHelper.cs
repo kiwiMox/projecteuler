@@ -74,7 +74,10 @@ namespace ProjectEuler
 
         public static bool IsPythagoreanTriplet(int a, int b, int c)
         {
-            return a < b && b < c && a < c;
+            return a < b 
+                && b < c 
+                && a < c
+                && (Math.Pow(a, 2) + Math.Pow(b, 2) == Math.Pow(c, 2));
         }
     }
 }
