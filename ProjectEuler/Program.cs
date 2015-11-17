@@ -28,6 +28,10 @@ namespace ProjectEuler
             //ComputeAndDisplayAnswer(Problems.Problems1_10.Problem8, 8);
             ComputeAndDisplayAnswer(Problems.Problems1_10.Problem8ZeroSplitStrings, 8);
 
+            ComputeAndDisplayAnswer(Problems.Problems1_10.Problem9, 9);
+
+            ComputeAndDisplayAnswer(Problems.Problems1_10.Problem10, 10);
+
             #endregion
 
             var timeTaken = DateTime.UtcNow - startTime;

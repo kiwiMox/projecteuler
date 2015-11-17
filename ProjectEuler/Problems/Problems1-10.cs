@@ -196,5 +196,15 @@ namespace ProjectEuler.Problems
 
             return maxProduct;
         }
+
+        public static long Problem9()
+        {
+            throw new NotImplementedException();
+        }
+
+        public static long Problem10()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
