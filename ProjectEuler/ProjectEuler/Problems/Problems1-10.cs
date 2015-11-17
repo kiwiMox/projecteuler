@@ -6,7 +6,7 @@ namespace ProjectEuler.Problems
 {
     public static class Problems1_10
     {
-        public static int Problem1()
+        public static long Problem1()
         {
             var sum = 0;
 
@@ -19,7 +19,7 @@ namespace ProjectEuler.Problems
             return sum;
         }
 
-        public static int Problem2()
+        public static long Problem2()
         {
             var sum = 0;
 
@@ -63,7 +63,7 @@ namespace ProjectEuler.Problems
             return maxFactor;
         }
 
-        public static int Problem4()
+        public static long Problem4()
         {
             var palindromes = new List<int>();
 
@@ -80,7 +80,7 @@ namespace ProjectEuler.Problems
             return palindromes.Max(x => x);
         }
 
-        public static int Problem5()
+        public static long Problem5()
         {
             var numbersUnderTest = ProblemHelper.NumbersOneToTwenty;
             var testValue = numbersUnderTest.Max();
@@ -91,6 +91,110 @@ namespace ProjectEuler.Problems
             }
 
             return testValue;
+        }
+
+        public static long Problem5PrimeFactors()
+        {
+            //https://projecteuler.net/overview=005
+
+            var numbersUnderTest = ProblemHelper.NumbersOneToTwenty;
+            var k = numbersUnderTest.Max();
+            var index = 0;
+            long N = 1;
+            var a = new List<double>();
+            var limit = Math.Sqrt(k);
+            var check = true;
+
+            while (ProblemHelper.GetPrimeAtIndex(index) <= k)
+            {
+                a.Add(1);
+                if (check)
+                {
+                    if (ProblemHelper.GetPrimeAtIndex(index) <= limit)
+                    {
+                        a[index] = Math.Floor(Math.Log(k) / Math.Log(ProblemHelper.GetPrimeAtIndex(index)));
+                    }
+                    else
+                    {
+                        check = false;
+                    }
+                }
+                N = N * (long)Math.Pow(ProblemHelper.GetPrimeAtIndex(index), a[index]);
+                index++;
+            }
+
+            return N;
+        }
+
+        public static long Problem6()
+        {
+            var numbers = new List<int>();
+
+            for (var x = 1; x <= 100; x++)
+            {
+                numbers.Add(x);
+            }
+
+            //sum of the squares
+            long sumOfSquares = 0;
+            numbers.ForEach(x => sumOfSquares += x*x);
+
+            //square of the sum
+            long squareOfTheSum = 0;
+            numbers.ForEach(x => squareOfTheSum += x);
+            squareOfTheSum = squareOfTheSum * squareOfTheSum;
+
+            return squareOfTheSum - sumOfSquares;
+        }
+
+        public static long Problem7()
+        {
+            return ProblemHelper.GetPrimeAtIndex(10000);
+        }
+
+        public static long Problem8()
+        {
+            const int adjacentCount = 13;
+            long maxProduct = 1;
+
+            for (var index = 0; index < ProblemHelper.ThousandDigitNumberText.Count() - adjacentCount; index++)
+            {
+                var digitsToTest = ProblemHelper.ThousandDigitNumberText.Substring(index, adjacentCount);
+
+                // skip the 0 values
+                if (digitsToTest.Contains("0"))
+                    continue;
+
+                var product = digitsToTest.Aggregate<char, long>(1, (current, c) => current*long.Parse(c.ToString()));
+
+                if (product > maxProduct)
+                    maxProduct = product;
+            }
+
+            return maxProduct;
+        }
+
+        public static long Problem8ZeroSplitStrings()
+        {
+            const int adjacentCount = 13;
+            long maxProduct = 1;
+
+            var splitStrings = ProblemHelper.ThousandDigitNumberText.Split('0').Where(x => x.Count() >= adjacentCount);
+
+            foreach (var toCheck in splitStrings)
+            {
+                for (var index = 0; index <= toCheck.Count() - adjacentCount; index++)
+                {
+                    var digitsToTest = toCheck.Substring(index, adjacentCount);
+                    
+                    var product = digitsToTest.Aggregate<char, long>(1, (current, c) => current * long.Parse(c.ToString()));
+
+                    if (product > maxProduct)
+                        maxProduct = product;
+                }
+            }
+
+            return maxProduct;
         }
     }
 }
