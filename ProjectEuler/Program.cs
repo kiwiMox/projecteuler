@@ -44,6 +44,8 @@ namespace ProjectEuler
 
             ComputeAndDisplayAnswer(Problems.Problems11_20.Problem13, 13);
 
+            ComputeAndDisplayAnswer(Problems.Problems11_20.Problem14StoringLength, 14);
+
             #endregion
 
             Console.WriteLine();

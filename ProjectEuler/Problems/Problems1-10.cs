@@ -28,7 +28,7 @@ namespace ProjectEuler.Problems
 
             while (currentNumber < 4000000)
             {
-                if (currentNumber%2 == 0)
+                if (currentNumber.IsEven())
                     sum += currentNumber;
 
                 var nextNumber = currentNumber + lastNumber;
